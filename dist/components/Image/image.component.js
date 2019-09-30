@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = require("react");
+const react_1 = __importDefault(require("react"));
 const react_native_fast_image_1 = __importDefault(require("react-native-fast-image"));
-class CdnImage extends react_1.Component {
+class CdnImage extends react_1.default.Component {
     generateSourceUrl(source) {
         if (typeof source === "number") {
             return source;
@@ -14,7 +14,7 @@ class CdnImage extends react_1.Component {
         const url = source;
         const height = style.height ? `&h=${style.height}` : "";
         const width = style.width ? `&w=${style.width}` : "";
-        if (height || width) {
+        if (height.length > 0 || width.length > 0) {
             const normalize = "&normalize=true";
             return Object.assign(Object.assign({}, source), { uri: `https://europe-west1-redmind-cdn.cloudfunctions.net/api/images?url=${url}${height}${width}${normalize}` });
         }

@@ -1,5 +1,5 @@
-import react, { Component } from "react";
-import { Platform, ImageStyle } from "react-native";
+import React from "react";
+import { ImageStyle } from "react-native";
 import FastImage, {
   FastImageProperties,
   FastImageSource
@@ -11,7 +11,7 @@ export interface CdnImageProps extends FastImageProperties {
 }
 export type CdnImageState = {};
 
-export class CdnImage extends Component<CdnImageProps, CdnImageState> {
+export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
   static defaultProps: Partial<CdnImageProps> = {
     normalize: true,
     imageFormat: "webp"
@@ -27,7 +27,7 @@ export class CdnImage extends Component<CdnImageProps, CdnImageState> {
     const url = source;
     const height = style.height ? `&h=${style.height}` : "";
     const width = style.width ? `&w=${style.width}` : "";
-    if (height || width) {
+    if (height.length > 0 || width.length > 0) {
       const normalize = "&normalize=true";
       return {
         ...source,
