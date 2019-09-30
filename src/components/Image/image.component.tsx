@@ -12,7 +12,7 @@ export interface CdnImageProps extends FastImageProperties {
 export type CdnImageState = {};
 
 export class CdnImage extends Component<CdnImageProps, CdnImageState> {
-  static defaulProps: Partial<CdnImageProps> = {
+  static defaultProps: Partial<CdnImageProps> = {
     normalize: true,
     imageFormat: "webp"
   };

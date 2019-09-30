@@ -26,7 +26,7 @@ class CdnImage extends react_1.Component {
     }
 }
 exports.CdnImage = CdnImage;
-CdnImage.defaulProps = {
+CdnImage.defaultProps = {
     normalize: true,
     imageFormat: "webp"
 };
