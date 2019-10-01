@@ -17,6 +17,10 @@
     "url": "https://github.com/RedmindAB/cdn-image/issues"
   },
   "homepage": "https://github.com/RedmindAB/cdn-image#readme",
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-native": "^0.60.0"
+  },
   "devDependencies": {
     "@types/node": "^12.7.8",
     "@types/react": "^16.9.3",
