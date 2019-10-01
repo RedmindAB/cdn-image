@@ -18,8 +18,9 @@
   },
   "homepage": "https://github.com/RedmindAB/cdn-image#readme",
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-native": "^0.60.0"
+    "react": "^16.10.1",
+    "react-native": "^0.61.1",
+    "react-native-fast-image": "^7.0.2"
   },
   "devDependencies": {
     "@types/node": "^12.7.8",
