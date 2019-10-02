@@ -35,6 +35,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
+var react_native_1 = require("react-native");
 var react_native_fast_image_1 = __importDefault(require("react-native-fast-image"));
 var CdnImage = /** @class */ (function (_super) {
     __extends(CdnImage, _super);
@@ -45,20 +46,19 @@ var CdnImage = /** @class */ (function (_super) {
         if (typeof source === "number") {
             return source;
         }
-        var style = this.props.style;
+        var style = react_native_1.StyleSheet.flatten(this.props.style);
         var url = source;
         var height = style.height ? "&h=" + style.height : "";
         var width = style.width ? "&w=" + style.width : "";
-        if (height.length > 0 || width.length > 0) {
-            var normalize = "&normalize=true";
-            return __assign(__assign({}, source), { uri: "https://europe-west1-redmind-cdn.cloudfunctions.net/api/images?url=" + url + height + width + normalize });
-        }
-        return source;
+        var normalize = "&normalize=true";
+        var imageFormat = "&imageFormat=" + this.props.imageFormat;
+        return __assign(__assign({}, source), { uri: "https://europe-west1-redmind-cdn.cloudfunctions.net/api/images?url=" + url + height + width + normalize + imageFormat });
     };
     CdnImage.prototype.render = function () {
         var modifiedProps = __assign(__assign({}, this.props), { source: this.generateSourceUrl(this.props.source) });
         if (this.props.debug) {
-            console.log(modifiedProps);
+            console.log("CdnImage input", this.props);
+            console.log("CdnImage Output", modifiedProps);
         }
         return <react_native_fast_image_1.default {...modifiedProps}/>;
     };
