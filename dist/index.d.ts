@@ -7,6 +7,7 @@ export interface CdnImageProps extends FastImageProperties {
 export declare type CdnImageState = {};
 export declare class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
     static defaultProps: Partial<CdnImageProps>;
+    constructor(props: CdnImageProps);
     generateSourceUrl(source: FastImageSource | number): FastImageSource | number;
     render(): JSX.Element;
 }

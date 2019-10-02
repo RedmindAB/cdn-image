@@ -38,8 +38,8 @@ var React = __importStar(require("react"));
 var react_native_fast_image_1 = __importDefault(require("react-native-fast-image"));
 var CdnImage = /** @class */ (function (_super) {
     __extends(CdnImage, _super);
-    function CdnImage() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function CdnImage(props) {
+        return _super.call(this, props) || this;
     }
     CdnImage.prototype.generateSourceUrl = function (source) {
         if (typeof source === "number") {

@@ -17,6 +17,10 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
     imageFormat: "webp"
   };
 
+  constructor(props: CdnImageProps) {
+    super(props);
+  }
+
   generateSourceUrl(
     source: FastImageSource | number
   ): FastImageSource | number {
