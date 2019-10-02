@@ -1,6 +1,6 @@
 {
   "name": "cdn-image",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Get Images from Redmind-CDN with correct sizes instead of directly from the source",
   "main": "dist/index.js",
   "scripts": {
