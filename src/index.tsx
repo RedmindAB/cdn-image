@@ -33,14 +33,12 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
     const url = source;
     const height = style.height ? `&h=${style.height}` : "";
     const width = style.width ? `&w=${style.width}` : "";
-    if (height.length > 0 || width.length > 0) {
-      const normalize = "&normalize=true";
-      return {
-        ...source,
-        uri: `https://europe-west1-redmind-cdn.cloudfunctions.net/api/images?url=${url}${height}${width}${normalize}`
-      };
-    }
-    return source;
+    const normalize = "&normalize=true";
+    const imageFormat = `&imageFormat=${this.props.imageFormat}`;
+    return {
+      ...source,
+      uri: `https://europe-west1-redmind-cdn.cloudfunctions.net/api/images?url=${url}${height}${width}${normalize}${imageFormat}`
+    };
   }
 
   render() {
@@ -49,7 +47,8 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
       source: this.generateSourceUrl(this.props.source)
     } as FastImageProperties;
     if (this.props.debug) {
-      console.log(modifiedProps);
+      console.log("CdnImage input", this.props);
+      console.log("CdnImage Output", modifiedProps);
     }
     return <FastImage {...modifiedProps} />;
   }
