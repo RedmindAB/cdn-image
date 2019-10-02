@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ImageStyle } from "react-native";
+import { StyleSheet } from "react-native";
 import FastImage, {
   FastImageProperties,
   FastImageSource
@@ -29,7 +29,7 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
     if (typeof source === "number") {
       return source;
     }
-    const style = this.props.style as ImageStyle;
+    const style = StyleSheet.flatten(this.props.style);
     const url = source;
     const height = style.height ? `&h=${style.height}` : "";
     const width = style.width ? `&w=${style.width}` : "";
