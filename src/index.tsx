@@ -30,7 +30,7 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
       return source;
     }
     const style = StyleSheet.flatten(this.props.style);
-    const url = source;
+    const url = source.uri;
     const height = style.height ? `&h=${style.height}` : "";
     const width = style.width ? `&w=${style.width}` : "";
     const normalize = "&normalize=true";
