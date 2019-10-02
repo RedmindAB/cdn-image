@@ -47,7 +47,7 @@ var CdnImage = /** @class */ (function (_super) {
             return source;
         }
         var style = react_native_1.StyleSheet.flatten(this.props.style);
-        var url = source;
+        var url = source.uri;
         var height = style.height ? "&h=" + style.height : "";
         var width = style.width ? "&w=" + style.width : "";
         var normalize = "&normalize=true";
