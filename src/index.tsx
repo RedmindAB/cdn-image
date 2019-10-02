@@ -8,13 +8,15 @@ import FastImage, {
 export interface CdnImageProps extends FastImageProperties {
   imageFormat: "jpg" | "png" | "webp";
   normalize: boolean;
+  debug: boolean;
 }
 export type CdnImageState = {};
 
 export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
   static defaultProps: Partial<CdnImageProps> = {
     normalize: true,
-    imageFormat: "webp"
+    imageFormat: "webp",
+    debug: false
   };
 
   constructor(props: CdnImageProps) {
@@ -46,6 +48,9 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
       ...this.props,
       source: this.generateSourceUrl(this.props.source)
     } as FastImageProperties;
+    if (this.props.debug) {
+      console.log(modifiedProps);
+    }
     return <FastImage {...modifiedProps} />;
   }
 }
