@@ -4,7 +4,7 @@
   "description": "Get Images from Redmind-CDN with correct sizes instead of directly from the source",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
