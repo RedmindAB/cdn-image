@@ -57,11 +57,15 @@ var CdnImage = /** @class */ (function (_super) {
     };
     CdnImage.prototype.render = function () {
         var modifiedProps = __assign(__assign({}, this.props), { source: this.generateSourceUrl(this.props.source) });
+        if (this.props.debug) {
+            console.log(modifiedProps);
+        }
         return <react_native_fast_image_1.default {...modifiedProps}/>;
     };
     CdnImage.defaultProps = {
         normalize: true,
-        imageFormat: "webp"
+        imageFormat: "webp",
+        debug: false
     };
     return CdnImage;
 }(React.Component));

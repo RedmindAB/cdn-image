@@ -3,6 +3,7 @@ import { FastImageProperties, FastImageSource } from "react-native-fast-image";
 export interface CdnImageProps extends FastImageProperties {
     imageFormat: "jpg" | "png" | "webp";
     normalize: boolean;
+    debug: boolean;
 }
 export declare type CdnImageState = {};
 export declare class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
