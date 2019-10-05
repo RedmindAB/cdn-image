@@ -23,16 +23,38 @@ export class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
     super(props);
   }
 
+  roundNumber(number: number) {
+    return Math.ceil(number / 100) * 100;
+  }
+
+  ensureUriEncoding(uri: string) {
+    try {
+      if (uri === decodeURI(uri)) {
+        return encodeURI(uri);
+      }
+    } catch (error) {
+      return encodeURI(uri);
+    }
+    return uri;
+  }
+
   generateSourceUrl(
     source: FastImageSource | number
   ): FastImageSource | number {
     if (typeof source === "number") {
       return source;
+    } else if (!source || !source.uri) {
+      console.warn("No URI Provided for CdnImage");
+      return source;
     }
     const style = StyleSheet.flatten(this.props.style);
-    const url = source.uri;
-    const height = style.height ? `&h=${style.height}` : "";
-    const width = style.width ? `&w=${style.width}` : "";
+    const url = this.ensureUriEncoding(source.uri);
+    const height = style.height
+      ? `&h=${this.roundNumber(+style.height)}`
+      : "&h=500";
+    const width = style.width
+      ? `&w=${this.roundNumber(+style.width)}`
+      : "&w=500";
     const normalize = "&normalize=true";
     const imageFormat = `&imageFormat=${this.props.imageFormat}`;
     return {
