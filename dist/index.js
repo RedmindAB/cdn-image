@@ -42,14 +42,36 @@ var CdnImage = /** @class */ (function (_super) {
     function CdnImage(props) {
         return _super.call(this, props) || this;
     }
+    CdnImage.prototype.roundNumber = function (number) {
+        return Math.ceil(number / 100) * 100;
+    };
+    CdnImage.prototype.ensureUriEncoding = function (uri) {
+        try {
+            if (uri === decodeURI(uri)) {
+                return encodeURI(uri);
+            }
+        }
+        catch (error) {
+            return encodeURI(uri);
+        }
+        return uri;
+    };
     CdnImage.prototype.generateSourceUrl = function (source) {
         if (typeof source === "number") {
             return source;
         }
+        else if (!source || !source.uri) {
+            console.warn("No URI Provided for CdnImage");
+            return source;
+        }
         var style = react_native_1.StyleSheet.flatten(this.props.style);
-        var url = source.uri;
-        var height = style.height ? "&h=" + style.height : "";
-        var width = style.width ? "&w=" + style.width : "";
+        var url = this.ensureUriEncoding(source.uri);
+        var height = style.height
+            ? "&h=" + this.roundNumber(+style.height)
+            : "&h=500";
+        var width = style.width
+            ? "&w=" + this.roundNumber(+style.width)
+            : "&w=500";
         var normalize = "&normalize=true";
         var imageFormat = "&imageFormat=" + this.props.imageFormat;
         return __assign(__assign({}, source), { uri: "https://europe-west1-redmind-cdn.cloudfunctions.net/api/images?url=" + url + height + width + normalize + imageFormat });

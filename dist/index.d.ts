@@ -9,6 +9,8 @@ export declare type CdnImageState = {};
 export declare class CdnImage extends React.Component<CdnImageProps, CdnImageState> {
     static defaultProps: Partial<CdnImageProps>;
     constructor(props: CdnImageProps);
+    roundNumber(number: number): number;
+    ensureUriEncoding(uri: string): string;
     generateSourceUrl(source: FastImageSource | number): FastImageSource | number;
     render(): JSX.Element;
 }
